@@ -2,9 +2,288 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadithyaa R - Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode"> <!-- Start with dark mode by default -->
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader-ring"></div>
+    <span>Loading Portfolio...</span>
+</div>
 
+<!-- Particles.js Container -->
+<div id="particles-js"></div>
+
+<!-- Theme Toggle Button -->
+<button id="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i> <!-- Initial icon based on default dark mode -->
+</button>
+
+<header id="header">
+    <nav>
+        <a href="#home" class="logo">AadithyaaR.dev</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="resume.pdf" target="_blank" class="nav-link resume-button">Resume <i class="fas fa-download"></i></a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- HOME SECTION -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="greeting scroll-fade-in">Hey There! <span class="wave">👋🏻</span> I'm</h1>
+                <h2 class="name scroll-fade-in"><span class="highlight">Aadithyaa R</span></h2>
+                <h3 class="role scroll-fade-in">An <span id="typed-role"></span></h3>
+                <div class="hero-social-links scroll-fade-in">
+                    <a href="mailto:your.email@example.com" aria-label="Email" target="_blank"><i class="fas fa-envelope"></i></a>
+                    <a href="https://leetcode.com/u/fujitsu11/" aria-label="LeetCode" target="_blank"><i class="fas fa-code"></i></a>
+                    <a href="https://www.linkedin.com/in/aadithyaar/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.github.com/aadithyaa9" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+                <a href="#projects" class="btn-primary scroll-fade-in hero-cta">View My Work <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-avatar scroll-fade-in">
+                <img src="images/avatar.png" alt="Aadithyaa R">
+            </div>
+        </div>
+        <a href="#about" class="scroll-down-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="about-section content-section">
+        <h2 class="section-title scroll-fade-in">ABOUT <span class="highlight">ME</span></h2>
+        <div class="about-container">
+            <div class="about-image scroll-slide-in-left">
+                <img src="images/about-illustration.svg" alt="About Me Illustration">
+            </div>
+            <div class="about-text scroll-slide-in-right">
+                <p>Hello! I'm Aadithyaa, a passionate and results-oriented <span class="highlight">Computer Science student</span> specializing in the <span class="highlight">Internet of Things</span> at Shiv Nadar University Chennai. My journey into technology is driven by a deep curiosity for how software and hardware intertwine to create impactful solutions. I'm not just about code; I'm about building experiences that are intuitive, efficient, and push the boundaries of innovation. 🦄</p>
+                <p>Currently honing my skills in areas like <span class="highlight">Data Structures, Software Engineering, and OOP</span>, I thrive on transforming complex problems into elegant digital realities. Whether it's developing full-stack applications or diving into database management, my goal is to craft technology that truly makes a difference.</p>
+                <p>Beyond the screen, I'm an active community member, contributing to environmental initiatives through NSS and gaining hands-on experience in event management. These experiences have taught me the value of collaboration, communication, and making a tangible impact—qualities I bring to every technical endeavor.</p>
+                <p>Eager to connect, collaborate, and contribute to exciting tech ventures. Let's build something amazing!</p>
+                <a href="resume.pdf" target="_blank" class="btn-secondary" download="AadithyaaR_Resume.pdf">
+                    My Resume <i class="fas fa-cloud-download-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills-section content-section">
+        <h2 class="section-title scroll-fade-in">MY <span class="highlight">SKILLSET</span></h2>
+        <div class="skills-category scroll-fade-in">
+            <h3 class="category-title"><i class="fas fa-code"></i> Languages</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span>Python</span></div>
+                <div class="skill-card"><span>Java</span></div>
+                <div class="skill-card"><span>C</span></div>
+                <div class="skill-card"><span>C++</span></div>
+                <div class="skill-card"><span>JavaScript</span></div>
+            </div>
+        </div>
+        <div class="skills-category scroll-fade-in">
+            <h3 class="category-title"><i class="fas fa-cubes"></i> Frameworks & Libraries</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span>React.js</span></div>
+                <div class="skill-card"><span>Node.js</span></div>
+                <div class="skill-card"><span>Express.js</span></div>
+                <div class="skill-card"><span>EJS</span></div>
+                <div class="skill-card"><span>FastAPI</span></div>
+                <div class="skill-card"><span>JUnit</span></div>
+                <div class="skill-card"><span>JDBC</span></div>
+                <div class="skill-card"><span>JFreeChart</span></div>
+                <div class="skill-card"><span>Apache POI</span></div>
+                <div class="skill-card"><span>Swing</span></div>
+                <div class="skill-card"><span>Bootstrap</span></div>
+                <div class="skill-card"><span>Material-UI</span></div>
+                <div class="skill-card"><span>React Router</span></div>
+            </div>
+        </div>
+        <div class="skills-category scroll-fade-in">
+            <h3 class="category-title"><i class="fas fa-tools"></i> Developer Tools & Platforms</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span>Git</span></div>
+                <div class="skill-card"><span>GitHub</span></div>
+                <div class="skill-card"><span>Docker</span></div>
+                <div class="skill-card"><span>TravisCI</span></div>
+                <div class="skill-card"><span>Google Cloud Platform</span></div>
+                <div class="skill-card"><span>VS Code</span></div>
+            </div>
+        </div>
+        <div class="skills-category scroll-fade-in">
+            <h3 class="category-title"><i class="fas fa-database"></i> Databases</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span>MongoDB</span></div>
+                <div class="skill-card"><span>MySQL</span></div>
+                <div class="skill-card"><span>PostgreSQL</span></div>
+            </div>
+        </div>
+        <div class="skills-category scroll-fade-in">
+            <h3 class="category-title"><i class="fas fa-cogs"></i> DevOps & CI/CD</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span>Git</span></div>
+                <div class="skill-card"><span>Docker</span></div>
+                <div class="skill-card"><span>Google Cloud Platform</span></div>
+            </div>
+        </div>
+        <div class="skills-category scroll-fade-in">
+            <h3 class="category-title"><i class="fas fa-laptop"></i> Operating Systems</h3>
+            <div class="skills-grid">
+                <div class="skill-card"><span>Linux</span></div>
+                <div class="skill-card"><span>Windows</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects-section content-section">
+        <h2 class="section-title scroll-fade-in">MY <span class="highlight">PROJECTS</span></h2>
+        <p class="section-subtitle scroll-fade-in">Here are a few projects I've worked on, showcasing my passion for building and problem-solving.</p>
+        <div class="project-grid">
+            <div class="project-card scroll-fade-in">
+                <img src="images/project-pet.png" alt="Pet-Attention Project">
+                <div class="project-info">
+                    <h3 class="project-title">Pet-Attention</h3>
+                    <p class="project-description">A full-stack web application using React, Node.js, Express, and MongoDB. Features a Pomodoro timer with task tracking and a virtual pet that evolves based on task completion. Implemented RESTful APIs for task management and React Router for navigation.</p>
+                    <div class="project-tags">
+                        <span>React</span><span>Node.js</span><span>MongoDB</span><span>Express.js</span><span>CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/aadithyaa9/pet_attention" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card scroll-fade-in">
+                <img src="images/project-blog.png" alt="Simple Blog Application Project">
+                <div class="project-info">
+                    <h3 class="project-title">Simple Blog Application</h3>
+                    <p class="project-description">Designed a dynamic blog app with user authentication and content management. Implemented CRUD ops using MongoDB, EJS for server-side rendering, and Bootstrap for responsive UI. Optimized performance and security with Express.js middleware.</p>
+                    <div class="project-tags">
+                        <span>EJS</span><span>Node.js</span><span>MongoDB</span><span>Express.js</span><span>Bootstrap</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#github-link-blog" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#demo-link-blog" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card scroll-fade-in">
+                <img src="images/project-finance.png" alt="Finance Management System Project">
+                <div class="project-info">
+                    <h3 class="project-title">Finance Management System</h3>
+                    <p class="project-description">A GUI-based finance app using Java, OOP, Swing, SQLite, and JDBC. Features data visualization with JFreeChart (pie charts) and CSV export with Apache POI. Designed with a scalable architecture for future enhancements.</p>
+                    <div class="project-tags">
+                        <span>Java</span><span>OOP</span><span>Swing</span><span>SQLite</span><span>JFreeChart</span><span>Apache POI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#github-link-finance" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+                        <!-- No demo link for a Java Swing app typically unless it's web-deployed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VOLUNTEER EXPERIENCE SECTION -->
+    <section id="experience" class="experience-section content-section">
+        <h2 class="section-title scroll-fade-in">VOLUNTEER <span class="highlight">EXPERIENCE</span></h2>
+        <div class="experience-timeline scroll-fade-in">
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-hands-helping"></i></div>
+                <div class="timeline-content">
+                    <h3>National Service Scheme (NSS)</h3>
+                    <p class="timeline-date">Sept 2023 – Present</p>
+                    <ul>
+                        <li>Actively contributed to campus-wide cleaning campaigns.</li>
+                        <li>Participated in beach cleanup drives promoting community engagement.</li>
+                        <li>Attended environmental awareness sessions, deepening conservation understanding.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-users"></i></div>
+                <div class="timeline-content">
+                    <h3>Event Management Volunteer – Crowd Committee (Invente, Instincts)</h3>
+                    <p class="timeline-date">College Fests</p>
+                    <ul>
+                        <li>Gained hands-on experience in large-scale event management (technical & cultural fests).</li>
+                        <li>Managed crowd control, ensuring smooth operations and safety.</li>
+                        <li>Collaborated with coordinators for audience engagement and logistics.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section content-section">
+        <h2 class="section-title scroll-fade-in">GET IN <span class="highlight">TOUCH</span></h2>
+        <p class="section-subtitle scroll-fade-in">
+            I'm currently looking for new opportunities and I'm always open to discussing new projects or ideas.
+            <br>Whether you have a question or just want to say hi, feel free to reach out!
+        </p>
+        <div class="contact-methods scroll-fade-in">
+            <a href="mailto:aadiramki01@gmail.com" class="contact-method-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>your.email@example.com</p>
+                <span>Send a Message</span>
+            </a>
+            <a href="https://www.linkedin.com/in/aadithyaar" target="_blank" class="contact-method-card">
+                <i class="fab fa-linkedin-in"></i>
+                <h3>LinkedIn</h3>
+                <p>Connect with me</p>
+                <span>View Profile</span>
+            </a>
+            <a href="https://github.com/aadithyaa9" target="_blank" class="contact-method-card">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p>See my code</p>
+                <span>View Profile</span>
+            </a>
+            <a href="https://leetcode.com/u/fujitsu11" target="_blank" class="contact-method-card">
+                <i class="fas fa-code"></i>
+                <h3>LeetCode</h3>
+                <p>Problem Solving</p>
+                <span>View Profile</span>
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Designed & Developed with <i class="fas fa-heart" style="color: var(--primary-color);"></i> by Aadithyaa R</p>
+    <p>© <span id="current-year"></span> All Rights Reserved.</p>
+    <div class="footer-social-icons">
+        <a href="https://www.linkedin.com/in/aadithyaar" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/aadithyaa9" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:aadiramki01@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
