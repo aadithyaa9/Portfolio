@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const burger = document.querySelector('.burger');
     const typedRoleSpan = document.getElementById('typed-role');
-    const currentYearSpan = document.getElementById('current-year');
+    const currentYearSpan = document.getElementById('current-year'); // This was missing
     const backToTopButton = document.getElementById('back-to-top');
     const themeToggleButton = document.getElementById('theme-toggle');
     const preloader = document.getElementById('preloader');
@@ -159,8 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": {"onhover": {"enable": true, "mode": "grab"}, "onclick": {"enable": false, "mode": "push"}, "resize": true},
-                "modes": {"grab": {"distance": 120, "line_linked": {"opacity": 0.6}}, "push": {"particles_nb": 4}}
+                "events": {"onhover": {"enable": false }, "onclick": {"enable": false, "mode": "push"}, "resize": true}, // onhover disabled
+                "modes": {"push": {"particles_nb": 4}} // grab mode can be removed if hover is disabled
             },
             "retina_detect": true
         });

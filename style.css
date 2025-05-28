@@ -126,17 +126,35 @@ body.light-mode .hero-text .name { color: var(--primary-color)}
 .hero-social-links a { color: var(--text-muted); font-size: 1.6rem; margin-right: 1.5rem; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; display: inline-block;}
 .hero-social-links a:hover { color: var(--primary-color); transform: scale(1.2); }
 .hero-cta { font-size: 1rem; padding: 0.9rem 2rem;}
-.hero-avatar img {
+
+.hero-avatar {
     width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 40px var(--border-color-dark);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-avatar img {
+    max-width: 100%;
+    max-height: 350px;
+    height: auto;
+    width: auto;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
     transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
-.hero-avatar img:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--primary-color); }
-body.light-mode .hero-avatar img { box-shadow: 0 0 40px var(--border-color-light); }
-body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-color-light); }
+body.dark-mode .hero-avatar img {
+    box-shadow: 0px 8px 24px var(--border-color-dark);
+}
+body.light-mode .hero-avatar img {
+    box-shadow: 0px 8px 24px var(--border-color-light);
+}
+.hero-avatar img:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 12px 30px var(--primary-color);
+}
+
 .scroll-down-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--primary-color); font-size: 1.5rem; animation: bounce 2s infinite; }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-15px); } 60% { transform: translateX(-50%) translateY(-8px); } }
 
@@ -232,6 +250,7 @@ footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
     .about-container { flex-direction: column; }
     .about-image { margin-top: 2rem; }
     .about-text { text-align: center; }
+    .hero-avatar { margin-bottom: 1.5rem; }
 }
 @media (max-width: 768px) {
     :root { --header-height: 60px; }
@@ -248,7 +267,8 @@ footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
     .hero-text .greeting { font-size: 1.8rem; }
     .hero-text .name { font-size: 2.8rem; }
     .hero-text .role { font-size: 1.6rem; min-height: 2.5rem; }
-    .hero-avatar img { width: 240px; height: 240px; }
+    .hero-avatar { width: 240px; }
+    .hero-avatar img { max-height: 300px; }
     .section-title { font-size: 2rem; }
     .section-subtitle { font-size: 1rem; }
     .experience-timeline::before { left: 15px; }
@@ -260,7 +280,8 @@ footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
     .content-section { padding: 3rem 1rem; }
     .hero-text .name { font-size: 2.2rem; }
     .hero-text .role { font-size: 1.3rem; min-height: 2rem; }
-    .hero-avatar img { width: 200px; height: 200px; }
+    .hero-avatar { width: 200px; }
+    .hero-avatar img { max-height: 250px; }
     .skills-grid { justify-content: center; }
     .skill-card { padding: 0.6rem 1rem; font-size: 0.8rem; }
     .project-grid { grid-template-columns: 1fr; }
