@@ -1,13 +1,11 @@
-/* === VARIABLES & BASE STYLES === */
 :root {
-    /* Color Scheme - Dark Mode Default */
-    --primary-color-dark: #c770f0; /* Main purple */
-    --primary-hover-dark: #a855f7; /* Darker purple for hover */
-    --secondary-color-dark: #61dafb; /* Accent blue/cyan */
-    --background-dark: #0a0a1a; /* Very dark blue/purple */
-    --content-bg-dark: #121224; /* Slightly lighter for cards/sections */
-    --text-light-dark: #e0e0e0; /* Light text for dark bg */
-    --text-muted-dark: #a0a0a0; /* Grey text */
+    --primary-color-dark: #c770f0;
+    --primary-hover-dark: #a855f7;
+    --secondary-color-dark: #61dafb;
+    --background-dark: #0a0a1a;
+    --content-bg-dark: #121224;
+    --text-light-dark: #e0e0e0;
+    --text-muted-dark: #a0a0a0;
     --border-color-dark: rgba(199, 112, 240, 0.3);
     --card-shadow-dark: 0px 8px 20px rgba(199, 112, 240, 0.15);
     --card-hover-shadow-dark: 0px 10px 30px rgba(199, 112, 240, 0.3);
@@ -15,14 +13,13 @@
     --nav-sticky-bg-dark: rgba(10, 10, 26, 0.95);
     --icon-bg-dark: rgba(199, 112, 240, 0.1);
 
-    /* Color Scheme - Light Mode */
-    --primary-color-light: #5c0099; /* Darker Purple for Light Mode Primary */
+    --primary-color-light: #5c0099;
     --primary-hover-light: #4a007b;
-    --secondary-color-light: #007bff; /* Blue for Light Mode Secondary */
-    --background-light: #f4f7fc; /* Light grey bg */
-    --content-bg-light: #ffffff; /* White for cards */
-    --text-dark-light: #212529; /* Dark text for light bg */
-    --text-muted-light: #6c757d; /* Grey text */
+    --secondary-color-light: #007bff;
+    --background-light: #f4f7fc;
+    --content-bg-light: #ffffff;
+    --text-dark-light: #212529;
+    --text-muted-light: #6c757d;
     --border-color-light: rgba(92, 0, 153, 0.2);
     --card-shadow-light: 0px 8px 20px rgba(0, 0, 0, 0.08);
     --card-hover-shadow-light: 0px 10px 30px rgba(0, 0, 0, 0.12);
@@ -30,7 +27,6 @@
     --nav-sticky-bg-light: rgba(255, 255, 255, 0.95);
     --icon-bg-light: rgba(92, 0, 153, 0.08);
 
-    /* Current theme variables (defaults to dark) */
     --primary-color: var(--primary-color-dark);
     --primary-hover: var(--primary-hover-dark);
     --secondary-color: var(--secondary-color-dark);
@@ -70,7 +66,7 @@ body.light-mode {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-    font-family: var(--font-primary), serif; /* Maintained original 'Raleway', sans-serif logic */
+    font-family: var(--font-primary), serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.7;
@@ -79,7 +75,6 @@ body {
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* --- Preloader & Particles & Theme Toggle --- */
 #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--background-color); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
 #preloader.loaded { opacity: 0; visibility: hidden; }
 .loader-ring { border: 6px solid var(--border-color); border-top: 6px solid var(--primary-color); border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin-bottom: 15px; }
@@ -90,10 +85,9 @@ body {
 #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background-color: var(--background-color); transition: background-color var(--transition-speed) ease; }
 
 #theme-toggle { position: fixed; bottom: 20px; left: 20px; z-index: 1001; background-color: var(--content-bg); color: var(--primary-color); border: 2px solid var(--primary-color); border-radius: 50%; width: 45px; height: 45px; font-size: 1.2rem; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: var(--card-shadow); transition: all var(--transition-speed) ease; }
-#theme-toggle:hover { background-color: var(--primary-color); color: var(--content-bg-light); /* Using light content bg for icon on hover */ transform: scale(1.1); }
+#theme-toggle:hover { background-color: var(--primary-color); color: var(--content-bg-light); transform: scale(1.1); }
 
 
-/* === HEADER & NAVIGATION === */
 #header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--nav-bg); backdrop-filter: blur(10px); padding: 0 2rem; height: var(--header-height); transition: top var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease, border-bottom var(--transition-speed) ease; border-bottom: 1px solid transparent; }
 #header.sticky { box-shadow: 0 2px 15px rgba(0,0,0,0.1); background-color: var(--nav-sticky-bg); border-bottom: 1px solid var(--border-color); }
 nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 100%; }
@@ -107,14 +101,13 @@ nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-b
 .nav-link:hover, .nav-link.active { color: var(--primary-color); }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 .resume-button { padding: 0.5rem 1rem !important; border: 1px solid var(--primary-color); border-radius: 20px; transition: background-color var(--transition-speed), color var(--transition-speed); }
-.resume-button:hover { background-color: var(--primary-color); color: var(--content-bg-light); /* Usually white text on primary */ }
+.resume-button:hover { background-color: var(--primary-color); color: var(--content-bg-light); }
 .resume-button::after { display: none; }
 .resume-button i { margin-left: 0.3rem; }
 .burger { display: none; cursor: pointer; }
 .burger div { width: 25px; height: 2px; background-color: var(--text-color); margin: 5px; transition: all var(--transition-speed) ease; }
 
 
-/* === HERO SECTION (HOME) === */
 .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: calc(var(--header-height) + 3rem) 2rem 2rem; position: relative; overflow: hidden; }
 .hero-content { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; width: 100%; gap: 2rem; }
 .hero-text { max-width: 650px; }
@@ -124,7 +117,7 @@ nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-b
 .hero-text .name { font-size: 3.5rem;
     font-family: var(--font-primary), serif; font-weight: 700; color: var(--text-color); margin-bottom: 0.5rem; }
 .highlight { color: var(--primary-color); }
-body.light-mode .hero-text .name { color: var(--primary-color)} /* Stronger name in light mode */
+body.light-mode .hero-text .name { color: var(--primary-color)}
 .hero-text .role { font-size: 2rem;
     font-family: var(--font-code), serif; font-weight: 500; color: var(--secondary-color); min-height: 3rem; margin-bottom: 1.5rem;}
 #typed-role::after { content: '|'; animation: blink 0.7s infinite; color: var(--secondary-color); }
@@ -133,20 +126,25 @@ body.light-mode .hero-text .name { color: var(--primary-color)} /* Stronger name
 .hero-social-links a { color: var(--text-muted); font-size: 1.6rem; margin-right: 1.5rem; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; display: inline-block;}
 .hero-social-links a:hover { color: var(--primary-color); transform: scale(1.2); }
 .hero-cta { font-size: 1rem; padding: 0.9rem 2rem;}
-.hero-avatar img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary-color); box-shadow: 0 0 40px var(--border-color-dark); transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;}
+.hero-avatar img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 40px var(--border-color-dark);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
 .hero-avatar img:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--primary-color); }
 body.light-mode .hero-avatar img { box-shadow: 0 0 40px var(--border-color-light); }
 body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-color-light); }
 .scroll-down-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--primary-color); font-size: 1.5rem; animation: bounce 2s infinite; }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-15px); } 60% { transform: translateX(-50%) translateY(-8px); } }
 
-/* === GENERAL CONTENT SECTION STYLING === */
 .content-section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; overflow: hidden; }
 .section-title { font-size: 2.5rem;
     font-family: var(--font-code), serif; text-align: center; margin-bottom: 3rem; font-weight: 700; }
 .section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: -2rem auto 3rem auto; }
 
-/* === ABOUT SECTION === */
 .about-container { display: flex; align-items: center; gap: 3rem; }
 .about-image { flex: 0.8; text-align: center; }
 .about-image img { max-width: 100%; width: 320px; filter: drop-shadow(0 0 15px var(--border-color)); transition: filter var(--transition-speed) ease; }
@@ -156,15 +154,13 @@ body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-colo
 .about-text .highlight { color: var(--primary-color); font-weight: bold; }
 .about-text .btn-secondary { margin-top: 1rem; }
 
-/* === BUTTONS (General) === */
 .btn-primary, .btn-secondary { padding: 0.7rem 1.6rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all var(--transition-speed) ease; display: inline-block; border: 2px solid transparent; text-align: center; cursor: pointer; }
-.btn-primary { background-color: var(--primary-color); color: #fff; /* Ensure text is white on primary buttons */ }
+.btn-primary { background-color: var(--primary-color); color: #fff; }
 .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 4px 15px var(--border-color); }
 .btn-secondary { background-color: transparent; color: var(--primary-color); border-color: var(--primary-color); }
-.btn-secondary:hover { background-color: var(--primary-color); color: #fff; /* Ensure text is white */ transform: translateY(-3px); }
+.btn-secondary:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-3px); }
 .btn-primary i, .btn-secondary i { margin-left: 0.5rem; }
 
-/* === SKILLS SECTION === */
 .skills-category { margin-bottom: 3rem; }
 .category-title { font-size: 1.5rem;
     font-family: var(--font-code), serif; margin-bottom: 1.5rem; color: var(--secondary-color); display: flex; align-items: center;}
@@ -174,7 +170,6 @@ body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-colo
 .skill-card:hover { transform: translateY(-5px); box-shadow: var(--card-hover-shadow); border-color: var(--primary-color); background-color: var(--icon-bg);}
 .skill-card span { font-size: 0.9rem; font-weight: 500; color: var(--text-color); transition: color var(--transition-speed) ease;}
 
-/* === PROJECTS SECTION === */
 .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
 .project-card { background-color: var(--content-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); transition: all var(--transition-speed) ease; display: flex; flex-direction: column; }
 .project-card:hover { transform: translateY(-10px); box-shadow: var(--card-hover-shadow); }
@@ -188,7 +183,6 @@ body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-colo
 .project-links .btn-primary, .project-links .btn-secondary { font-size: 0.8rem; padding: 0.5rem 1rem; }
 .project-links .btn-primary i, .project-links .btn-secondary i { margin-right: 0.4rem; margin-left:0;}
 
-/* === VOLUNTEER EXPERIENCE SECTION === */
 .experience-timeline { position: relative; max-width: 700px; margin: 2rem auto; }
 .experience-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 3px; background-color: var(--border-color); border-radius: 2px;}
 .timeline-item { margin-bottom: 2.5rem; position: relative; padding-left: 50px; }
@@ -200,7 +194,6 @@ body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-colo
 .timeline-content ul { list-style-type: disc; padding-left: 20px; }
 .timeline-content ul li { margin-bottom: 0.4rem; font-size: 0.9rem; color: var(--text-muted); }
 
-/* === CONTACT SECTION === */
 .contact-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
 .contact-method-card { background-color: var(--content-bg); padding: 2rem 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); text-align: center; text-decoration: none; color: var(--text-color); transition: all var(--transition-speed) ease; }
 .contact-method-card:hover { transform: translateY(-8px); box-shadow: var(--card-hover-shadow); border-color: var(--primary-color); }
@@ -209,36 +202,29 @@ body.light-mode .hero-avatar img:hover { box-shadow: 0 0 60px var(--primary-colo
 .contact-method-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
 .contact-method-card span { font-size: 0.8rem; color: var(--secondary-color); font-weight: bold; text-decoration: underline; }
 
-/* === FOOTER === */
 footer { text-align: center; padding: 2.5rem 1rem; background-color: var(--content-bg); border-top: 1px solid var(--border-color); font-size: 0.9rem; transition: background-color var(--transition-speed) ease, border-top var(--transition-speed) ease; }
 footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
 .footer-social-icons { margin-top: 0.5rem; }
 .footer-social-icons a { color: var(--text-muted); font-size: 1.3rem; margin: 0 0.5rem; transition: color var(--transition-speed); }
 .footer-social-icons a:hover { color: var(--primary-color); }
 
-/* === BACK TO TOP BUTTON === */
 #back-to-top { position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px; background-color: var(--primary-color); color: #fff; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 10px var(--border-color); z-index: 999; opacity: 0; visibility: hidden; transition: all var(--transition-speed); transform: translateY(20px); }
 #back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 #back-to-top:hover { background-color: var(--primary-hover); }
 
-/* === SCROLL ANIMATIONS === */
 .scroll-fade-in, .scroll-slide-in-left, .scroll-slide-in-right { opacity: 0; transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
 .scroll-fade-in { transform: translateY(40px); }
 .scroll-slide-in-left { transform: translateX(-60px); }
 .scroll-slide-in-right { transform: translateX(60px); }
-/* Ensure hero section elements get .visible applied directly if they are at the top */
-.hero-section .scroll-fade-in { opacity: 0; transform: translateY(20px); transition-delay: 0.2s;} /* Slightly different initial for hero */
+.hero-section .scroll-fade-in { opacity: 0; transform: translateY(20px); transition-delay: 0.2s;}
 
 .visible { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
 
-.project-grid .project-card, .skills-grid .skill-card, .experience-timeline .timeline-item { /* Base for staggering */ opacity: 0; transform: translateY(30px); transition: opacity 0.5s ease-out, transform 0.5s ease-out;}
-/* Staggering for elements made visible by JS */
+.project-grid .project-card, .skills-grid .skill-card, .experience-timeline .timeline-item { opacity: 0; transform: translateY(30px); transition: opacity 0.5s ease-out, transform 0.5s ease-out;}
 .visible.project-card:nth-child(1), .visible.skill-card:nth-child(odd), .visible.timeline-item:nth-child(odd) { transition-delay: 0.1s; }
 .visible.project-card:nth-child(2), .visible.skill-card:nth-child(even), .visible.timeline-item:nth-child(even) { transition-delay: 0.2s; }
 .visible.project-card:nth-child(3) { transition-delay: 0.3s; }
 
-
-/* === RESPONSIVENESS === */
 @media (max-width: 992px) {
     .hero-content { flex-direction: column-reverse; text-align: center; }
     .hero-text { margin-top: 2rem; align-items: center; display: flex; flex-direction: column;}
@@ -254,7 +240,7 @@ footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
     .nav-links.nav-active { right: 0; }
     .nav-links li { margin: 1rem 0; width: 100%; text-align: center; }
     .nav-link { font-size: 1rem; }
-    .burger { display: block; z-index: 1000;} /* Ensure burger is on top */
+    .burger { display: block; z-index: 1000;}
     .burger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); background-color: var(--primary-color); }
     .burger.toggle .line2 { opacity: 0; }
     .burger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); background-color: var(--primary-color); }

@@ -10,18 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
     const scrollElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-in-left, .scroll-slide-in-right, .project-card, .skill-card, .timeline-item');
 
-
-    // --- Preloader ---
     window.addEventListener('load', () => {
         if (preloader) {
             preloader.classList.add('loaded');
             setTimeout(() => { if(preloader) preloader.style.display = 'none'; }, 500);
         }
-        // Trigger initial scroll animations check after load if elements are already in view
         checkScrollAnimations();
     });
 
-    // --- Theme Toggle ---
     const sunIcon = '<i class="fas fa-sun"></i>';
     const moonIcon = '<i class="fas fa-moon"></i>';
 
@@ -37,11 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if(themeToggleButton) themeToggleButton.innerHTML = sunIcon;
             localStorage.setItem('portfolioTheme', 'dark');
         }
-        // Re-initialize particles with correct colors if theme changes
         initParticlesJS(theme);
     }
 
-    const savedTheme = localStorage.getItem('portfolioTheme') || 'dark'; // Default to dark
+    const savedTheme = localStorage.getItem('portfolioTheme') || 'dark';
     applyTheme(savedTheme);
 
     if (themeToggleButton) {
@@ -51,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Sticky Header ---
     const headerHeight = header ? header.offsetHeight : 70;
     window.addEventListener('scroll', () => {
         if (header) {
@@ -68,10 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 backToTopButton.classList.remove('visible');
             }
         }
-        checkScrollAnimations(); // Check animations on scroll
+        checkScrollAnimations();
     });
 
-    // --- Mobile Navigation ---
     if (burger && navLinksContainer) {
         burger.addEventListener('click', () => {
             navLinksContainer.classList.toggle('nav-active');
@@ -89,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Typed Text Animation for Hero Section ---
     const roles = ["IoT Enthusiast", "Full Stack Developer", "Problem Solver", "Tech Innovator"];
     let roleIndex = 0;
     let charIndex = 0;
@@ -117,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (typedRoleSpan) typeRole();
 
-    // --- Intersection Observer for Active Nav Link & Scroll Animations ---
     const sections = document.querySelectorAll('section[id]');
     const observerOptions = { root: null, rootMargin: `-${headerHeight + 50}px 0px 0px 0px`, threshold: 0.4 };
 
@@ -133,32 +124,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
     sections.forEach(section => sectionObserver.observe(section));
 
-    // --- Scroll Reveal Animations (Function to check visibility) ---
     function checkScrollAnimations() {
-        const triggerBottom = window.innerHeight / 5 * 4.5; // Adjust trigger point
+        const triggerBottom = window.innerHeight / 5 * 4.5;
 
         scrollElements.forEach(el => {
             const boxTop = el.getBoundingClientRect().top;
             if(boxTop < triggerBottom) {
                 el.classList.add('visible');
-            } else if (!el.classList.contains('hero-section') && !el.closest('.hero-section')) { // Don't remove 'visible' from hero section elements that animate once
-                // Optional: remove 'visible' to re-animate if they scroll out and back in
-                // This line below could be uncommented if you want animations to replay on scroll up then down
-                // el.classList.remove('visible');
+            } else if (!el.classList.contains('hero-section') && !el.closest('.hero-section')) {
             }
         });
     }
-    checkScrollAnimations(); // Initial check
+    checkScrollAnimations();
 
-    // --- Footer Current Year ---
     if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
 
-    // --- Back to Top Button Action ---
     if (backToTopButton) backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // --- Particles.js Initialization ---
     function initParticlesJS(theme) {
-        const particleColor = theme === 'light' ? "#5c0099" : "#c770f0"; // Primary color based on theme
+        const particleColor = theme === 'light' ? "#5c0099" : "#c770f0";
         const lineColor = theme === 'light' ? "rgba(92, 0, 153, 0.4)" : "rgba(199, 112, 240, 0.2)";
         const particleDiv = document.getElementById('particles-js');
         if (!particleDiv) return;
@@ -181,6 +165,5 @@ document.addEventListener('DOMContentLoaded', () => {
             "retina_detect": true
         });
     }
-    // Call initially with the detected/saved theme
     initParticlesJS(localStorage.getItem('portfolioTheme') || 'dark');
 });
