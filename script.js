@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const burger = document.querySelector('.burger');
     const typedRoleSpan = document.getElementById('typed-role');
-    const currentYearSpan = document.getElementById('current-year'); // This was missing
+    const currentYearSpan = document.getElementById('current-year');
     const backToTopButton = document.getElementById('back-to-top');
     const themeToggleButton = document.getElementById('theme-toggle');
     const preloader = document.getElementById('preloader');
     const scrollElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-in-left, .scroll-slide-in-right, .project-card, .skill-card, .timeline-item');
+
+    let initialThemeApplied = false;
 
     window.addEventListener('load', () => {
         if (preloader) {
@@ -16,12 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { if(preloader) preloader.style.display = 'none'; }, 500);
         }
         checkScrollAnimations();
+
+
+        if (!initialThemeApplied) {
+            const savedThemeOnLoad = localStorage.getItem('portfolioTheme') || 'dark';
+            applyTheme(savedThemeOnLoad, true);
+            initialThemeApplied = true;
+        }
     });
 
     const sunIcon = '<i class="fas fa-sun"></i>';
     const moonIcon = '<i class="fas fa-moon"></i>';
 
-    function applyTheme(theme) {
+
+    function applyTheme(theme, isInitialLoad = false) {
         if (theme === 'light') {
             document.body.classList.add('light-mode');
             document.body.classList.remove('dark-mode');
@@ -33,16 +43,29 @@ document.addEventListener('DOMContentLoaded', () => {
             if(themeToggleButton) themeToggleButton.innerHTML = sunIcon;
             localStorage.setItem('portfolioTheme', 'dark');
         }
-        initParticlesJS(theme);
+
+        if (initialThemeApplied || !isInitialLoad) {
+            initParticlesJS(theme);
+        }
     }
 
+  
     const savedTheme = localStorage.getItem('portfolioTheme') || 'dark';
-    applyTheme(savedTheme);
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        if(themeToggleButton) themeToggleButton.innerHTML = moonIcon;
+    } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        if(themeToggleButton) themeToggleButton.innerHTML = sunIcon;
+    }
+
 
     if (themeToggleButton) {
         themeToggleButton.addEventListener('click', () => {
             const currentTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
-            applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+            applyTheme(currentTheme === 'light' ? 'dark' : 'light', false); // Not initial load
         });
     }
 
@@ -147,6 +170,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const particleDiv = document.getElementById('particles-js');
         if (!particleDiv) return;
 
+        if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+            window.pJSDom[0].pJS.fn.vendors.destroypJS();
+            window.pJSDom = [];
+        }
+
         particlesJS('particles-js', {
             "particles": {
                 "number": {"value": 50, "density": {"enable": true, "value_area": 800}},
@@ -159,11 +187,14 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": {"onhover": {"enable": false }, "onclick": {"enable": false, "mode": "push"}, "resize": true}, // onhover disabled
-                "modes": {"push": {"particles_nb": 4}} // grab mode can be removed if hover is disabled
+                "events": {"onhover": {"enable": true, "mode": "grab"}, "onclick": {"enable": false, "mode": "push"}, "resize": true},
+                "modes": {
+                    "grab": {"distance": 120 },
+                    "push": {"particles_nb": 4}
+                }
             },
             "retina_detect": true
         });
     }
-    initParticlesJS(localStorage.getItem('portfolioTheme') || 'dark');
+
 });
