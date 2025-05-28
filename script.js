@@ -141,8 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const boxTop = el.getBoundingClientRect().top;
             if(boxTop < triggerBottom) {
                 el.classList.add('visible');
-            } else if (!el.classList.contains('hero-section')) { // Don't remove from elements that should animate once
-                // Optional: remove 'visible' to re-animate
+            } else if (!el.classList.contains('hero-section') && !el.closest('.hero-section')) { // Don't remove 'visible' from hero section elements that animate once
+                // Optional: remove 'visible' to re-animate if they scroll out and back in
+                // This line below could be uncommented if you want animations to replay on scroll up then down
                 // el.classList.remove('visible');
             }
         });

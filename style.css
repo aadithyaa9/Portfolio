@@ -70,7 +70,7 @@ body.light-mode {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-    font-family: var(--font-primary), serif;
+    font-family: var(--font-primary), serif; /* Maintained original 'Raleway', sans-serif logic */
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.7;
@@ -226,11 +226,17 @@ footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
 .scroll-fade-in { transform: translateY(40px); }
 .scroll-slide-in-left { transform: translateX(-60px); }
 .scroll-slide-in-right { transform: translateX(60px); }
+/* Ensure hero section elements get .visible applied directly if they are at the top */
+.hero-section .scroll-fade-in { opacity: 0; transform: translateY(20px); transition-delay: 0.2s;} /* Slightly different initial for hero */
+
 .visible { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+
 .project-grid .project-card, .skills-grid .skill-card, .experience-timeline .timeline-item { /* Base for staggering */ opacity: 0; transform: translateY(30px); transition: opacity 0.5s ease-out, transform 0.5s ease-out;}
-.visible .project-card:nth-child(1), .visible .skills-grid .skill-card:nth-child(odd), .visible .experience-timeline .timeline-item:nth-child(odd) { transition-delay: 0.1s; }
-.visible .project-card:nth-child(2), .visible .skills-grid .skill-card:nth-child(even), .visible .experience-timeline .timeline-item:nth-child(even) { transition-delay: 0.2s; }
-.visible .project-card:nth-child(3) { transition-delay: 0.3s; }
+/* Staggering for elements made visible by JS */
+.visible.project-card:nth-child(1), .visible.skill-card:nth-child(odd), .visible.timeline-item:nth-child(odd) { transition-delay: 0.1s; }
+.visible.project-card:nth-child(2), .visible.skill-card:nth-child(even), .visible.timeline-item:nth-child(even) { transition-delay: 0.2s; }
+.visible.project-card:nth-child(3) { transition-delay: 0.3s; }
+
 
 /* === RESPONSIVENESS === */
 @media (max-width: 992px) {
