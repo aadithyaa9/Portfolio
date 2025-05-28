@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-  
+
     const savedTheme = localStorage.getItem('portfolioTheme') || 'dark';
     if (savedTheme === 'light') {
         document.body.classList.add('light-mode');
