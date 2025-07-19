@@ -245,7 +245,7 @@ footer p { margin-bottom: 0.5rem; color: var(--text-muted); }
 
 @media (max-width: 992px) {
     .hero-content { flex-direction: column-reverse; text-align: center; }
-    .hero-text { margin-top: 2rem; align-items: center; display: flex; flex-direction: column;}
+    .hero-text { margin-top: 2rem; align-items: center; display: flex; flex-direction: column; justify-content: center;} 
     .hero-social-links a { margin: 0 0.75rem; }
     .about-container { flex-direction: column; }
     .about-image { margin-top: 2rem; }
