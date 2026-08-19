@@ -1,377 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aadithyaa R - Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aadithyaa R</title>
+<meta name="description" content="Aadithyaa R, a Computer Science (IoT) student and software engineer based in Chennai, India, working across full-stack development." />
+<meta name="theme-color" content="#211f1c" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #211f1c;
+    --bg-raised: #29271f;
+    --bg-code: #1a1815;
+    --border: #3a372e;
+    --text: #ede7db;
+    --text-dim: #948d7a;
+    --text-faint: #6b6558;
+    --accent: #e8a54b;
+    --accent-soft: #d9944a33;
+    --kw: #c792ea;
+    --str: #9fca8f;
+    --prop: #82b6e0;
+    --num: #e8a54b;
+    --com: #6b6558;
+    --punc: #948d7a;
+    --fn: #e0c17a;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  ::selection{ background: var(--accent-soft); color: var(--text); }
+
+  header.site{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(33,31,28,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand{
+    font-weight: 700;
+    color: var(--text);
+    font-size: 15px;
+    letter-spacing: 0.2px;
+  }
+  .brand .dot{ color: var(--accent); }
+  .brand:hover{ text-decoration: none; }
+  .header-links{
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+  }
+  .header-links a{ color: var(--text-dim); }
+  .header-links a:hover{ color: var(--accent); }
+
+  .layout{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  main{ min-width: 0; padding-top: 8px; }
+
+  .hero{
+    padding: 56px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .hero .eyebrow{
+    color: var(--text-faint);
+    font-size: 13px;
+    margin: 0 0 10px;
+  }
+  .hero h1{
+    margin: 0 0 6px;
+    font-size: 30px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .hero .role{
+    color: var(--accent);
+    font-size: 15px;
+    margin: 0 0 20px;
+  }
+  .hero p{
+    color: var(--text-dim);
+    max-width: 60ch;
+    margin: 0 0 20px;
+  }
+  .hero .links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    font-size: 13px;
+  }
+  .hero .links a{ color: var(--text-dim); }
+  .hero .links a::before{ content: "→ "; color: var(--accent); }
+  .hero .links a:hover{ color: var(--accent); }
+
+  section{
+    margin: 0 0 56px;
+    scroll-margin-top: 76px;
+  }
+  section h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-faint);
+    margin: 0 0 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section h2 .num{ color: var(--accent); font-variant-numeric: tabular-nums; }
+  section .lede{
+    color: var(--text-dim);
+    font-size: 13px;
+    margin: 0 0 18px;
+  }
+  .filename{
+    color: var(--text-faint);
+    font-size: 12px;
+    font-style: italic;
+    margin: 0 0 6px;
+  }
+
+  pre.code{
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 0;
+    tab-size: 2;
+  }
+  pre.code code{
+    font-family: inherit;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--text);
+    white-space: pre;
+  }
+  .kw{ color: var(--kw); }
+  .str{ color: var(--str); }
+  .prop{ color: var(--prop); }
+  .num{ color: var(--num); }
+  .com{ color: var(--com); font-style: italic; }
+  .punc{ color: var(--punc); }
+  .fn{ color: var(--fn); }
+
+  ul.reflist{
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    font-size: 13px;
+  }
+  ul.reflist li a{ color: var(--text-dim); }
+  ul.reflist li a::before{ content: "▸ "; color: var(--accent); }
+  ul.reflist li a:hover{ color: var(--accent); }
+
+  aside.toc{
+    position: sticky;
+    top: 76px;
+    align-self: start;
+    font-size: 12.5px;
+    padding-top: 12px;
+  }
+  aside.toc .toc-label{
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10.5px;
+    margin-bottom: 10px;
+  }
+  aside.toc ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+  aside.toc a{
+    color: var(--text-faint);
+    display: block;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+  }
+  aside.toc a:hover{ color: var(--text-dim); text-decoration:none; }
+  aside.toc a.active{
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  footer{
+    border-top: 1px solid var(--border);
+    padding: 28px 0 60px;
+    color: var(--text-faint);
+    font-size: 12.5px;
+  }
+
+  @media (max-width: 780px){
+    .layout{ grid-template-columns: 1fr; }
+    aside.toc{ display:none; }
+    .hero{ padding: 40px 0 28px; }
+    .hero h1{ font-size: 26px; }
+  }
+</style>
 </head>
-<body class="dark-mode">
-<div id="preloader">
-    <div class="loader-ring"></div>
-    <span>Loading Portfolio...</span>
-</div>
+<body>
 
-<div id="particles-js"></div>
-
-<button id="theme-toggle" aria-label="Toggle theme">
-    <i class="fas fa-sun"></i>
-</button>
-
-<header id="header">
-    <nav>
-        <a href="#home" class="logo">AadithyaaR.dev</a>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            <li><a href="resume.pdf" target="_blank" class="nav-link resume-button">Resume <i class="fas fa-download"></i></a></li>
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="#home">aadithyaa<span class="dot">.</span>dev</a>
+    <nav class="header-links">
+      <a href="https://www.github.com/aadithyaa9" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/aadithyaar/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="./resume.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
+  </div>
 </header>
 
-<main>
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="greeting scroll-fade-in">Hey There! <span class="wave">👋🏻</span> I'm</h1>
-                <h2 class="name scroll-fade-in"><span class="highlight">Aadithyaa R</span></h2>
-                <h3 class="role scroll-fade-in">A Software Engineer and </h3>
-                <h3 class="role scroll-fade-in"><span id="typed-role"></span></h3>
-                <div class="hero-social-links scroll-fade-in">
-                    <a href="mailto:aadiramki01@gmail.com" aria-label="Email" target="_blank"><i class="fas fa-envelope"></i></a>
-                    <a href="https://leetcode.com/u/fujitsu11/" aria-label="LeetCode" target="_blank"><i class="fas fa-code"></i></a>
-                    <a href="https://www.linkedin.com/in/aadithyaar/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.github.com/aadithyaa9" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
-                <a href="#projects" class="btn-primary scroll-fade-in hero-cta">View My Work <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="hero-avatar scroll-fade-in">
-                <img src="images/avatar.png" alt="Aadithyaa R">
-            </div>
-        </div>
-        <a href="#about" class="scroll-down-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+<div class="layout">
+  <main id="home">
+
+    <section class="hero" id="introduction">
+      <p class="eyebrow"> </p>
+      <h1>Aadithyaa R</h1>
+      <p class="role">Software Engineer — Computer Science (IoT), Chennai</p>
+      <p>
+        Hi , I am Aadithyaa R, a Computer Science (IoT) student and software engineer based in Chennai, India. I work across full-stack development and distributed systems. 
+        I am always open to have tech talks and discussions . I am on a relentless trajectory to be among the top 1% of engineers in distributed systems.
+      </p>
+      <p>This page covers my background, skills, projects, and how to reach me. Use the list on the right to jump to a section.</p>
+      <div class="links">
+        <a href="mailto:aadiramki01@gmail.com">aadiramki01@gmail.com</a>
+        <a href="https://leetcode.com/u/fujitsu11/" target="_blank" rel="noopener">leetcode.com/u/fujitsu11</a>
+        <a href="https://www.github.com/aadithyaa9" target="_blank" rel="noopener">github.com/aadithyaa9</a>
+      </div>
     </section>
 
-    <section id="about" class="about-section content-section">
-        <h2 class="section-title scroll-fade-in">ABOUT <span class="highlight">ME</span></h2>
-        <div class="about-container">
-            <div class="about-image scroll-slide-in-left">
-                <img src="images/about-illustration.svg" alt="About Me Illustration">
-            </div>
-            <div class="about-text scroll-slide-in-right">
-                <p>Hello! I'm Aadithyaa R, a passionate and results-oriented <span class="highlight">Computer Science student</span> specializing in the <span class="highlight">Internet of Things</span> at Shiv Nadar University Chennai. My journey into technology is driven by a deep curiosity for how software and hardware intertwine to create impactful solutions. I'm not just about code; I'm about building experiences that are intuitive, efficient, and push the boundaries of innovation. 🦄</p>
-                <p>Currently honing my skills in areas like <span class="highlight">Data Structures, Software Engineering, and OOP</span>, I thrive on transforming complex problems into elegant digital realities. Whether it's developing full-stack applications or diving into database management, my goal is to craft technology that truly makes a difference.</p>
-                <p>Beyond the screen, I'm an active community member, contributing to environmental initiatives through NSS and gaining hands-on experience in event management. These experiences have taught me the value of collaboration, communication, and making a tangible impact—qualities I bring to every technical endeavor.</p>
-                <p>Eager to connect, collaborate, and contribute to exciting tech ventures. Let's build something amazing!</p>
-                <a href="resume.pdf" target="_blank" class="btn-secondary" download="AadithyaaR_Resume.pdf">
-                    My Resume <i class="fas fa-cloud-download-alt"></i>
-                </a>
-            </div>
-        </div>
+    <section id="education">
+      <h2><span class="num">01</span> Education</h2>
+      <p class="filename">education.ts</p>
+      <pre class="code"><code><span class="kw">export const</span> <span class="prop">education</span> <span class="punc">=</span> <span class="punc">{</span>
+  <span class="prop">institute</span><span class="punc">:</span> <span class="str">"Shiv Nadar University Chennai"</span><span class="punc">,</span>
+  <span class="prop">degree</span><span class="punc">:</span> <span class="str">"B.Tech in Computer Science and Engineering"</span><span class="punc">,</span>
+  <span class="prop">specialization</span><span class="punc">:</span> <span class="str">"Internet of Things"</span><span class="punc">,</span>
+  <span class="prop">location</span><span class="punc">:</span> <span class="str">"Chennai, India"</span><span class="punc">,</span>
+  <span class="prop">coreAreas</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Distributed Systems"</span><span class="punc">,</span> <span class="str">"Software Engineering"</span><span class="punc">,</span> <span class="str">"System Design"</span><span class="punc">,</span> <span class="str">"Databases"</span><span class="punc">]</span>
+<span class="punc">}</span> <span class="kw">as const</span></code></pre>
     </section>
 
-    <section id="skills" class="skills-section content-section">
-        <h2 class="section-title scroll-fade-in">MY <span class="highlight">SKILLSET</span></h2>
-        <div class="skills-category scroll-fade-in">
-            <h3 class="category-title"><i class="fas fa-code"></i> Languages</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span>Python</span></div>
-                <div class="skill-card"><span>Java</span></div>
-                <div class="skill-card"><span>C</span></div>
-                <div class="skill-card"><span>C++</span></div>
-                <div class="skill-card"><span>JavaScript</span></div>
-                <div class="skill-card"><span>Golang</span></div>
-
-            </div>
-        </div>
-        <div class="skills-category scroll-fade-in">
-            <h3 class="category-title"><i class="fas fa-cubes"></i> Frameworks & Libraries</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span>React.js</span></div>
-                <div class="skill-card"><span>Node.js</span></div>
-                <div class="skill-card"><span>Express.js</span></div>
-                <div class="skill-card"><span>EJS</span></div>
-                <div class="skill-card"><span>Axioa</span></div>
-                <div class="skill-card"><span>FastAPI</span></div>
-                <div class="skill-card"><span>Zustand</span></div>
-                <div class="skill-card"><span>JUnit</span></div>
-                <div class="skill-card"><span>JDBC</span></div>
-                <div class="skill-card"><span>JFreeChart</span></div>
-                <div class="skill-card"><span>Apache POI</span></div>
-                <div class="skill-card"><span>Swing</span></div>
-                <div class="skill-card"><span>Bootstrap</span></div>
-                <div class="skill-card"><span>Material-UI</span></div>
-                <div class="skill-card"><span>Daisy-UI</span></div>
-                <div class="skill-card"><span>React Router</span></div>
-                <div class="skill-card"><span>Tailwind CSS</span></div>
-                <div class="skill-card"><span>GSAP</span></div>
-            </div>
-        </div>
-        <div class="skills-category scroll-fade-in">
-            <h3 class="category-title"><i class="fas fa-tools"></i> Developer Tools & Platforms</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span>Git</span></div>
-                <div class="skill-card"><span>GitHub</span></div>
-                <div class="skill-card"><span>VS Code</span></div>
-                <div class="skill-card"><span>Vite</span></div>
-                <div class="skill-card"><span>Docker</span></div>
-
-            </div>
-        </div>
-        <div class="skills-category scroll-fade-in">
-            <h3 class="category-title"><i class="fas fa-database"></i> Databases</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span>MongoDB</span></div>
-                <div class="skill-card"><span>MySQL</span></div>
-                <div class="skill-card"><span>PostgreSQL</span></div>
-            </div>
-        </div>
-        <div class="skills-category scroll-fade-in">
-            <h3 class="category-title"><i class="fas fa-cogs"></i> DevOps & CI/CD</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span>Git</span></div>
-            </div>
-        </div>
-        <div class="skills-category scroll-fade-in">
-            <h3 class="category-title"><i class="fas fa-laptop"></i> Operating Systems</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span>Linux</span></div>
-                <div class="skill-card"><span>Windows</span></div>
-            </div>
-        </div>
+        <section id="work-experience">
+      <h2><span class="num">02</span> Experience</h2>
+      <p class="filename">work-experience.ts</p>
+      <pre class="code"><code><span class="kw">export const</span> <span class="prop">workExperience</span> <span class="punc">= [</span>
+  <span class="punc">{</span>
+    <span class="prop">company</span><span class="punc">:</span> <span class="str">"Hypertangent Technology"</span><span class="punc">,</span>
+    <span class="prop">role</span><span class="punc">:</span> <span class="str">"Machine Learning Intern"</span><span class="punc">,</span>
+    <span class="prop">location</span><span class="punc">:</span> <span class="str">"Chennai, India"</span><span class="punc">,</span>
+    <span class="prop">duration</span><span class="punc">:</span> <span class="str">"June 2026 - Present"</span><span class="punc">,</span>
+    <span class="prop">highlights</span><span class="punc">:</span> <span class="punc">[</span>
+      <span class="str">"Engineered async ROS 2 vision preprocessor synchronizing color and depth feeds from Intel RealSense, generating dense observation tensors"</span><span class="punc">,</span>
+      <span class="str">"Developed PPO-based RL policies using Stable-Baselines3 and Gymnasium for autonomous rover navigation and path planning"</span><span class="punc">,</span>
+      <span class="str">"Integrated dynamic reward shaping in Gazebo Ignition to optimize mobile robot control algorithms"</span>
+    <span class="punc">]</span>
+  <span class="punc">}</span>
+<span class="punc">]</span> <span class="kw">as const</span></code></pre>
     </section>
 
-    <section id="projects" class="projects-section content-section">
-        <h2 class="section-title scroll-fade-in">MY <span class="highlight">PROJECTS</span></h2>
-        <p class="section-subtitle scroll-fade-in">Here are a few projects I've worked on, showcasing my passion for building and problem-solving.</p>
-        <div class="project-grid">
-
-            <div class="project-card scroll-fade-in">
-                <img src="images/mojito.png" alt="Mojito Website Clone Project">
-                <div class="project-info">
-                    <h3 class="project-title">Mojito Website Clone</h3>
-                    <p class="project-description">A modern, animated front-end clone of the Mojito website, built with React and Vite. Features advanced animations powered by GSAP and a fully responsive design crafted with Tailwind CSS, demonstrating a focus on performance and visual appeal.</p>
-                    <div class="project-tags">
-                        <span>React</span><span>Vite</span><span>Tailwind CSS</span><span>GSAP</span><span>Front-end</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/gsap_cocktails" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://gsap-cocktails-o1qb.vercel.app/" target="_blank"  class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-fade-in">
-                <img src="images/Product Management.png" alt="Product Management">
-                <div class="project-info">
-                    <h3 class="project-title">Product Management</h3>
-                    <p class="project-description">A CRUD App to maintain the list of Products that I have bought and also the price and the image of it.This solved my probelm of whether i have it or not. i have added my smallest ever purchase as well so that i dont buy it again. Theme Toggler is also enabled with the help of Daisy-UI</p>
-                    <div class="project-tags">
-                        <span>React</span><span>Vite</span><span>Tailwind CSS</span><span>Zustand</span><span>Front-end</span>
-                        <span>Express</span><span>NEODB</span><span>Axios</span><span>PostgreSQL</span><span>Helmet</span><span>arcjet</span><span>morgan</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/Portfolio" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://product-management-8x7z.onrender.com/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i>Demo</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-fade-in">
-                <img src="/images/thinkboard.png" alt="notes">
-                <div class="project-info">
-                    <h3 class="project-title"> Think Board</h3>
-                    <p class="project-description">A thinkBoard is a Note taking app designed for personal use, I have also enabled rate limiting just to make sure that there are enough requests currently being given to the user.</p>
-                    <div class="project-tags">
-                        <span>React</span><span>Express.js</span><span>Tailwind CSS</span><span>Full Stack</span><span>MongoDB</span><span>RateLimiter</span><span>Upstash</span>
-                    </div>
-                    <div class="project-links">
-                    <a href="https://github.com/aadithyaa9/notes" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> Github</a>
-                    <a href="https://notes-a7xz.onrender.com/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i>Demo</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-card scroll-fade-in">
-                <img src="images/img.png" alt="Pet-Attention Project">
-                <div class="project-info">
-                    <h3 class="project-title">Pet-Attention</h3>
-                    <p class="project-description">A full-stack web application using React, Node.js, Express, and MongoDB. Features a Pomodoro timer with task tracking and a virtual pet that evolves based on task completion. Implemented RESTful APIs for task management and React Router for navigation.</p>
-                    <div class="project-tags">
-                        <span>React</span><span>Node.js</span><span>MongoDB</span><span>Express.js</span><span>CSS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/pet_attention" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card scroll-fade-in">
-                <img src="images/writeit.png" alt="WriteIt Project">
-                <div class="project-info">
-                    <h3 class="project-title">Simple Blog Application</h3>
-                    <p class="project-description">Designed a dynamic blog app with user authentication and content management. Implemented CRUD ops using MongoDB, EJS for server-side rendering, and Bootstrap for responsive UI. Optimized performance and security with Express.js middleware.</p>
-                    <div class="project-tags">
-                        <span>EJS</span><span>Node.js</span><span>MongoDB</span><span>Express.js</span><span>Bootstrap</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/Simple-Blog" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://simple-blog-8kob.onrender.com" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card scroll-fade-in">
-                <img src="images/finance_2.jpg" alt="Finance Management System Project">
-                <div class="project-info">
-                    <h3 class="project-title">Finance Management System</h3>
-                    <p class="project-description">A GUI-based finance app using Java, OOP, Swing, SQLite, and JDBC. Features data visualization with JFreeChart (pie charts) and CSV export with Apache POI. Designed with a scalable architecture for future enhancements.</p>
-                    <div class="project-tags">
-                        <span>Java</span><span>OOP</span><span>Swing</span><span>SQLite</span><span>JFreeChart</span><span>Apache POI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/Finance_MANAGER" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="project-card scroll-fade-in">
-                <img src="images/project-gallery.png" alt="CollegeTips Gallery Website">
-                <div class="project-info">
-                    <h3 class="project-title">CollegeTips Gallery Website</h3>
-                    <p class="project-description">Developed a responsive gallery website for CollegeTips, sourcing images directly from their official online presence. The project focused on creating a visually appealing and user-friendly interface for showcasing photographs, emphasizing clean design and optimal image viewing across various devices.</p>
-                    <div class="project-tags">
-                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span><span>UI/UX</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/gallery/" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://aadithyaa9.github.io/gallery/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-fade-in">
-                <img src="images/QEMU.png" alt="QEMU Labs">
-                <div class="project-info">
-                    <h3 class="project-title">QEMU Labs</h3>
-                    <p class="project-description">Engineered a browser-based virtualization lab orchestrating KVM-accelerated QEMU instances and Docker containers to simulate complex network topologies, featuring a custom multicast networking layer for Layer 2 connectivity and Apache Guacamole for clientless remote access</p>
-                    <div class="project-tags">
-                        <span>DOCKER</span><span>NodeJS</span><span>JavaScript</span><span>Guacamole</span><span>PostgreSQL</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/QEMULAB" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card scroll-fade-in">
-                <img src="images/netverse.png" alt="Netverse Labs">
-                <div class="project-info">
-                    <h3 class="project-title">Netverse Labs</h3>
-                    <p class="project-description">Architected a real-time educational metaverse using Next.js 16 and TypeScript, featuring a custom Framer Motion game engine, Firebase-powered multiplayer synchronization with Role-Based Access Control (RBAC), and intelligent NPC tutors driven by Google Gemini A</p>
-                    <div class="project-tags">
-                        <span>NextJS</span><span>Framer Motion</span><span>GCP</span><span>Game Engine</span><span>Firebase</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/aadithyaa9/netverse-lab" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="https://metaverse-lab-eight.vercel.app/" target="_blank" class="btn-primary"><i class="fas fa-external-link-alt"></i> Demo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="experience">
+      <h2><span class="num">03</span> Volunteer &amp; Activities</h2>
+      <p class="lede">Here's where I've spent my time outside class.</p>
+      <p class="filename">experience.ts</p>
+      <pre class="code"><code><span class="kw">export const</span> <span class="prop">experience</span> <span class="punc">= [</span>
+  <span class="punc">{</span>
+    <span class="prop">org</span><span class="punc">:</span> <span class="str">"National Service Scheme (NSS)"</span><span class="punc">,</span>
+    <span class="prop">role</span><span class="punc">:</span> <span class="str">"Volunteer"</span><span class="punc">,</span>
+    <span class="prop">duration</span><span class="punc">:</span> <span class="str">"Sept 2023 - Present"</span><span class="punc">,</span>
+    <span class="prop">highlights</span><span class="punc">:</span> <span class="punc">[</span>
+      <span class="str">"Contributed to campus-wide cleaning campaigns"</span><span class="punc">,</span>
+      <span class="str">"Participated in beach cleanup drives"</span><span class="punc">,</span>
+      <span class="str">"Attended environmental awareness sessions"</span>
+    <span class="punc">]</span>
+  <span class="punc">},</span>
+  <span class="punc">{</span>
+    <span class="prop">org</span><span class="punc">:</span> <span class="str">"Invente / Instincts (College Fests)"</span><span class="punc">,</span>
+    <span class="prop">role</span><span class="punc">:</span> <span class="str">"Event Management Volunteer — Crowd Committee"</span><span class="punc">,</span>
+    <span class="prop">duration</span><span class="punc">:</span> <span class="str">"College Fests"</span><span class="punc">,</span>
+    <span class="prop">highlights</span><span class="punc">:</span> <span class="punc">[</span>
+      <span class="str">"Managed crowd control for large-scale technical & cultural fests"</span><span class="punc">,</span>
+      <span class="str">"Collaborated with coordinators on audience engagement & logistics"</span>
+    <span class="punc">]</span>
+  <span class="punc">}</span>
+<span class="punc">]</span> <span class="kw">as const</span></code></pre>
     </section>
 
-    <section id="experience" class="experience-section content-section">
-        <h2 class="section-title scroll-fade-in">VOLUNTEER <span class="highlight">EXPERIENCE</span></h2>
-        <div class="experience-timeline scroll-fade-in">
-            <div class="timeline-item">
-                <div class="timeline-icon"><i class="fas fa-hands-helping"></i></div>
-                <div class="timeline-content">
-                    <h3>National Service Scheme (NSS)</h3>
-                    <p class="timeline-date">Sept 2023 – Present</p>
-                    <ul>
-                        <li>Actively contributed to campus-wide cleaning campaigns.</li>
-                        <li>Participated in beach cleanup drives promoting community engagement.</li>
-                        <li>Attended environmental awareness sessions, deepening conservation understanding.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-icon"><i class="fas fa-users"></i></div>
-                <div class="timeline-content">
-                    <h3>Event Management Volunteer – Crowd Committee (Invente, Instincts)</h3>
-                    <p class="timeline-date">College Fests</p>
-                    <ul>
-                        <li>Gained hands-on experience in large-scale event management (technical & cultural fests).</li>
-                        <li>Managed crowd control, ensuring smooth operations and safety.</li>
-                        <li>Collaborated with coordinators for audience engagement and logistics.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <section id="projects">
+      <h2><span class="num">04</span> Projects</h2>
+      <p class="lede">Selected work across distributed systems and full-stack apps. Full source on GitHub.</p>
+      <p class="filename">projects.ts</p>
+      <pre class="code"><code><span class="kw">export const</span> <span class="prop">projects</span> <span class="punc">=</span> <span class="punc">{</span>
+
+    <span class="prop">distroStore</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"distro-store"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Distributed file storage system built from scratch, inspired by S3"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/distro-store"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Go"</span><span class="punc">,</span> <span class="str">"Consistent Hashing"</span><span class="punc">,</span> <span class="str">"Content-Addressable Storage"</span><span class="punc">,</span> <span class="str">"HTTP"</span><span class="punc">]</span>
+  <span class="punc">},</span>
+
+  <span class="prop">qemuLabs</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"QEMU Labs"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Browser-based virtualization lab with KVM-accelerated QEMU"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/QEMULAB"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Docker"</span><span class="punc">,</span> <span class="str">"Node.js"</span><span class="punc">,</span> <span class="str">"Guacamole"</span><span class="punc">,</span> <span class="str">"PostgreSQL"</span><span class="punc">]</span>
+  <span class="punc">},</span>
+
+    <span class="prop">netverseLabs</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"Netverse Labs"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Real-time educational metaverse with AI NPC tutors"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/netverse-lab"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Next.js"</span><span class="punc">,</span> <span class="str">"TypeScript"</span><span class="punc">,</span> <span class="str">"Framer Motion"</span><span class="punc">,</span> <span class="str">"Firebase"</span><span class="punc">,</span> <span class="str">"Gemini API"</span><span class="punc">]</span>
+  <span class="punc">},</span>
+
+  <span class="prop">logAnalyzer</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"LogAnalyzer"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Concurrent log analysis CLI processing gigabytes of logs in seconds"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/Log-Analyzer"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Go"</span><span class="punc">,</span> <span class="str">"Goroutines"</span><span class="punc">,</span> <span class="str">"Worker Pools"</span><span class="punc">,</span> <span class="str">"fsnotify"</span><span class="punc">]</span>
+  <span class="punc">},</span>
+
+  <span class="prop">tarsChat</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"Tars Chat"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Real-time messaging app with presence, typing & group chat"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/tars-chat"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Next.js"</span><span class="punc">,</span> <span class="str">"TypeScript"</span><span class="punc">,</span> <span class="str">"Convex"</span><span class="punc">,</span> <span class="str">"Clerk"</span><span class="punc">,</span> <span class="str">"Tailwind CSS"</span><span class="punc">]</span>
+  <span class="punc">},</span>
+
+  <span class="prop">mojitoClone</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"Mojito Website Clone"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Animated front-end clone with GSAP scroll animations"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/gsap_cocktails"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"React"</span><span class="punc">,</span> <span class="str">"Vite"</span><span class="punc">,</span> <span class="str">"GSAP"</span><span class="punc">,</span> <span class="str">"Tailwind CSS"</span><span class="punc">]</span>
+  <span class="punc">},</span>
+
+  <span class="prop">financeManager</span><span class="punc">:</span> <span class="punc">{</span>
+    <span class="prop">name</span><span class="punc">:</span> <span class="str">"Finance Management System"</span><span class="punc">,</span>
+    <span class="prop">summary</span><span class="punc">:</span> <span class="str">"Desktop finance app with charting & CSV export"</span><span class="punc">,</span>
+    <span class="prop">repository</span><span class="punc">:</span> <span class="str">"github.com/aadithyaa9/Finance_MANAGER"</span><span class="punc">,</span>
+    <span class="prop">stack</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"Java"</span><span class="punc">,</span> <span class="str">"Swing"</span><span class="punc">,</span> <span class="str">"SQLite"</span><span class="punc">,</span> <span class="str">"JFreeChart"</span><span class="punc">,</span> <span class="str">"Apache POI"</span><span class="punc">]</span>
+  <span class="punc">}</span>
+
+<span class="punc">}</span> <span class="kw">as const</span></code></pre>
+
+      <ul class="reflist">
+        <li><a href="https://github.com/aadithyaa9/distro-store" target="_blank" rel="noopener">distro-store</a></li>
+        <li><a href="https://github.com/aadithyaa9/netverse-lab" target="_blank" rel="noopener">Netverse Labs</a></li>
+        <li><a href="https://github.com/aadithyaa9/QEMULAB" target="_blank" rel="noopener">QEMU Labs</a></li>
+        <li><a href="https://github.com/aadithyaa9/Log-Analyzer" target="_blank" rel="noopener">LogAnalyzer</a></li>
+        <li><a href="https://github.com/aadithyaa9/tars-chat" target="_blank" rel="noopener">Tars Chat</a></li>
+        <li><a href="https://github.com/aadithyaa9/gsap_cocktails" target="_blank" rel="noopener">Mojito Clone</a></li>
+        <li><a href="https://github.com/aadithyaa9/Finance_MANAGER" target="_blank" rel="noopener">Finance Manager</a></li>
+      </ul>
     </section>
 
-    <section id="contact" class="contact-section content-section">
-        <h2 class="section-title scroll-fade-in">GET IN <span class="highlight">TOUCH</span></h2>
-        <p class="section-subtitle scroll-fade-in">
-            I'm currently looking for new opportunities, and I'm always open to discussing new projects or ideas.
-            <br>Whether you have a question or just want to say hi, feel free to reach out!
-        </p>
-        <div class="contact-methods scroll-fade-in">
-            <a href="mailto:aadiramki01@gmail.com" class="contact-method-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <p>aadiramki01@gmail.com</p>
-                <span>Send a Message</span>
-            </a>
-            <a href="https://www.linkedin.com/in/aadithyaar" target="_blank" class="contact-method-card">
-                <i class="fab fa-linkedin-in"></i>
-                <h3>LinkedIn</h3>
-                <p>Connect with me</p>
-                <span>View Profile</span>
-            </a>
-            <a href="https://github.com/aadithyaa9" target="_blank" class="contact-method-card">
-                <i class="fab fa-github"></i>
-                <h3>GitHub</h3>
-                <p>See my code</p>
-                <span>View Profile</span>
-            </a>
-            <a href="https://leetcode.com/u/fujitsu11" target="_blank" class="contact-method-card">
-                <i class="fas fa-code"></i>
-                <h3>LeetCode</h3>
-                <p>Problem Solving</p>
-                <span>View Profile</span>
-            </a>
-        </div>
+    <section id="skills">
+      <h2><span class="num">05</span> Skills</h2>
+      <p class="lede">Tools I use, grouped by area.</p>
+      <p class="filename">skills.ts</p>
+      <pre class="code"><code><span class="kw">export const</span> <span class="prop">skills</span> <span class="punc">=</span> <span class="punc">{</span>
+  <span class="prop">languages</span><span class="punc">:</span>  <span class="punc">[</span><span class="str">"Python"</span><span class="punc">,</span> <span class="str">"Java"</span><span class="punc">,</span> <span class="str">"C"</span><span class="punc">,</span> <span class="str">"C++"</span><span class="punc">,</span> <span class="str">"JavaScript"</span><span class="punc">,</span> <span class="str">"Go"</span><span class="punc">],</span>
+  <span class="prop">frameworks</span><span class="punc">:</span> <span class="punc">[</span><span class="str">"React"</span><span class="punc">,</span> <span class="str">"Node.js"</span><span class="punc">,</span> <span class="str">"Express"</span><span class="punc">,</span> <span class="str">"EJS"</span><span class="punc">,</span> <span class="str">"FastAPI"</span><span class="punc">,</span> <span class="str">"Zustand"</span><span class="punc">],</span>
+  <span class="prop">ui</span><span class="punc">:</span>         <span class="punc">[</span><span class="str">"Tailwind CSS"</span><span class="punc">,</span> <span class="str">"Bootstrap"</span><span class="punc">,</span> <span class="str">"Material-UI"</span><span class="punc">,</span> <span class="str">"Daisy-UI"</span><span class="punc">,</span> <span class="str">"GSAP"</span><span class="punc">],</span>
+  <span class="prop">databases</span><span class="punc">:</span>  <span class="punc">[</span><span class="str">"MongoDB"</span><span class="punc">,</span> <span class="str">"MySQL"</span><span class="punc">,</span> <span class="str">"PostgreSQL"</span><span class="punc">],</span>
+  <span class="prop">tooling</span><span class="punc">:</span>    <span class="punc">[</span><span class="str">"Git"</span><span class="punc">,</span> <span class="str">"GitHub"</span><span class="punc">,</span> <span class="str">"VS Code"</span><span class="punc">,</span> <span class="str">"Vite"</span><span class="punc">,</span> <span class="str">"Docker"</span><span class="punc">],</span>
+  <span class="prop">os</span><span class="punc">:</span>         <span class="punc">[</span><span class="str">"Linux"</span><span class="punc">,</span> <span class="str">"Windows"</span><span class="punc">]</span>
+<span class="punc">}</span> <span class="kw">as const</span></code></pre>
     </section>
-</main>
 
-<footer>
-    <p>Designed & Developed with <i class="fas fa-heart" style="color: var(--primary-color);"></i> by Aadithyaa R</p>
-    <p>© <span id="current-year"></span> All Rights Reserved.</p>
-    <div class="footer-social-icons">
-        <a href="https://www.linkedin.com/in/aadithyaar" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/aadithyaa9" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:aadiramki01@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    </div>
-</footer>
+    <section id="contact">
+      <h2><span class="num">06</span> Contact</h2>
+      <p class="lede">Ways to reach me. Open to new opportunities and collaborations.</p>
+      <p class="filename">contact.ts</p>
+      <pre class="code"><code><span class="kw">export const</span> <span class="prop">contact</span> <span class="punc">=</span> <span class="punc">{</span>
+  <span class="prop">email</span><span class="punc">:</span>    <span class="str">"aadiramki01@gmail.com"</span><span class="punc">,</span>
+  <span class="prop">github</span><span class="punc">:</span>   <span class="str">"github.com/aadithyaa9"</span><span class="punc">,</span>
+  <span class="prop">linkedin</span><span class="punc">:</span> <span class="str">"linkedin.com/in/aadithyaar"</span><span class="punc">,</span>
+  <span class="prop">leetcode</span><span class="punc">:</span> <span class="str">"leetcode.com/u/fujitsu11"</span><span class="punc">,</span>
+  <span class="prop">resume</span><span class="punc">:</span>   <span class="str">"resume.pdf"</span>
+<span class="punc">}</span> <span class="kw">as const</span></code></pre>
 
-<button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+      <ul class="reflist">
+        <li><a href="mailto:aadiramki01@gmail.com">Email — aadiramki01@gmail.com</a></li>
+        <li><a href="https://www.github.com/aadithyaa9" target="_blank" rel="noopener">GitHub — aadithyaa9</a></li>
+        <li><a href="https://www.linkedin.com/in/aadithyaar/" target="_blank" rel="noopener">LinkedIn — aadithyaar</a></li>
+        <li><a href="https://leetcode.com/u/fujitsu11/" target="_blank" rel="noopener">LeetCode — fujitsu11</a></li>
+        <li><a href="./resume.pdf" target="_blank" rel="noopener">Resume — resume.pdf</a></li>
+      </ul>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script src="script.js"></script>
+    <footer>
+      Built by Aadithyaa R · Chennai, India
+    </footer>
+
+  </main>
+
+  <aside class="toc">
+    <p class="toc-label">On this page</p>
+    <ul id="tocList">
+      <li><a href="#introduction" data-target="introduction">Introduction</a></li>
+      <li><a href="#education" data-target="education">Education</a></li>
+      <li><a href="#experience" data-target="experience">Experience</a></li>
+      <li><a href="#projects" data-target="projects">Projects</a></li>
+      <li><a href="#skills" data-target="skills">Skills</a></li>
+      <li><a href="#contact" data-target="contact">Contact</a></li>
+    </ul>
+  </aside>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('main section[id]');
+  const links = document.querySelectorAll('#tocList a');
+
+  const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    const link = document.querySelector(`#tocList a[data-target="${id}"]`);
+    if (!link) return;
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+sections.forEach(sec => observer.observe(sec));
+window.addEventListener('scroll', () => {
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+  if (atBottom) {
+    const lastLink = links[links.length - 1];
+    links.forEach(l => l.classList.remove('active'));
+    lastLink.classList.add('active');
+  }
+}, { passive: true });
+</script>
+
 </body>
 </html>

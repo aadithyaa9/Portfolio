@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sunIcon = '<i class="fas fa-sun"></i>';
     const moonIcon = '<i class="fas fa-moon"></i>';
 
-
     function applyTheme(theme, isInitialLoad = false) {
         if (theme === 'light') {
             document.body.classList.add('light-mode');
